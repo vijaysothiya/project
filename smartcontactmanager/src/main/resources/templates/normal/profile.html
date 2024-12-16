@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>about</title>
+</head>
+<body>
+	
+	
+
+<section style="background-color: #eee;" th:if="${user}">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+      
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img th:src="@{'/img/'+${user.imageUrl}}" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
+            <h5 class="my-3"><span th:text="${user.name}"></span></h5>
+            <p class="text-muted mb-1"><span th:text="${user.role}"></span></p>
+            <p class="text-muted mb-4">Address</p>
+           
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fas fa-globe fa-lg text-warning"></i>
+                <p class="mb-0">https://google.com</p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-github fa-lg text-body"></i>
+                <p class="mb-0">Storage</p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                <p class="mb-0">
+                <span>@</span>
+                <span th:text="${user.name}"></span>
+                </p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                <p class="mb-0"><span th:text="${user.name}"></span></p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                <p class="mb-0">
+                 <span>@</span>
+                <span th:text="${user.name}"></span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><span th:text="${user.name}"></span></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><span th:text="${user.email}"></span></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Mobile</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">99999999999</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Role</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><span th:text="${user.role}"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      <div class="row">
+         <div class="col-lg-12">
+          <div class="card mb-8">
+           <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1"></span> Detailed Description
+                </p>
+                <p>
+                <span th:text="${user.about}"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+         
+
+        </div>
+        </div>
+      </div>
+    </div>
+
+ <script>
+	   $(document).ready(() => {
+	        $(".item").removeClass("active");
+	        $("#prof-link").addClass("active");
+	   });
+</script> 
+</section>
+
+
+
+
+
+</body>
+</html>

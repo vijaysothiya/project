@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>about</title>
+</head>
+<body>
+	
+	
+	<section>
+	
+	   <div class="card mr-3 ml-3 ">
+	   
+	     <div class="card-body">
+	     
+	     <h1 class="text-center">Your Contacts</h1>
+	     
+	     <!-- Search Engine -->
+	     
+	     <div class="search-container my-1">
+	     <input onkeyup="search()" id="search-input" type="text" class="form-control" placeholder="search name here" />
+	     
+	     <div class="search-result">
+	     
+	    
+	     </div>
+	     
+	     </div>
+	     
+	     <div class="table-responsive">
+	       <table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col">#ID</th>
+			      <th scope="col">Name</th>
+			      <th scope="col">Email</th>
+			      <th scope="col">Phone</th>
+			      <th scope="col">Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="c : ${contacts}" >
+			      <th scope="row" th:text="'SCM2020'+${c.cId}"></th>
+			      
+			      <td>
+			      
+			      <img src="" class="my_prifile_style" th:src="@{'/img/'+${c.image}}" alt="" />
+			      
+			      <span th:text="${c.name}"></span>
+			      </td>
+			      
+			      
+			      <td>
+			      <a href="#" th:href="@{'/user/contact/'+${c.cId}}">
+			      
+			      <span th:text="${c.email}"></span>
+			      </a>
+			      </td>
+			      <td th:text="${c.phone}"></td>
+			      <td>
+			      
+			   <!--    
+			      <form method="post" th:action="@{'/user/delete/'+${c.cId}}" class="mt-2">
+			      <button type="submit" class="btn btn-primary btn-sm">Delete</button> 
+			       </form> -->
+			       <div class="row">
+			        <form class="mt-1 ml-1">
+                   <a href="#" th:onclick="|deleteUserContact(${c.cId})|" id="delete-btn"  class="btn btn-outline-primary me-1 flex-grow-1">Delete</a>
+                   </form>
+			       
+			       
+			      
+			      <form method="post" th:action="@{'/user/update-contact/'+${c.cId}}" class="mt-1 ml-1">
+			      <button type="submit" class="btn btn-outline-primary  flex-grow-1">Update</button> 
+			       </form>
+			       </div>
+			      </td>
+			    </tr>
+			    
+			  </tbody>
+   </table>
+</div>
+<!-- Pagination Part -->
+	        <nav aria-label="Page navigation example">
+	        
+			  <ul class="pagination">
+			  
+			    <li th:if="${currentPage != 0}" class="page-item"><a th:href="@{'/user/show-contacts/'+${currentPage-1}}"  class="page-link" href="#">Previous</a></li>
+			    
+			    <li th:classappend="${currentPage==i-1?'active':''}" th:each="i : ${#numbers.sequence(1,totalPage)}" class="page-item"><a th:href="@{'/user/show-contacts/'+${i-1}}" class="page-link" href="#"><span th:text="${i}"></span></a></li>
+			   
+			    <li th:if="${currentPage+1 != totalPage}" class="page-item"><a th:href="@{'/user/show-contacts/'+${currentPage+1}}" class="page-link" href="#">Next</a></li>
+			    
+			  </ul>
+			</nav>
+				     </div>
+	   
+	   
+	   </div>	
+	   
+	   <script>
+	   $(document).ready(() => {
+	        $(".item").removeClass("active");
+	        $("#show-link").addClass("active");
+	   });
+	   </script>
+		
+	</section>
+
+
+</body>
+</html>

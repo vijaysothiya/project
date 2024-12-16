@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Contact Details</title>
+</head>
+<body>
+	
+	
+	<section >
+	<section style="background-color: #eee;" th:if="${model}">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img th:src="@{'/img/'+${model.image}}" alt="avatar"
+              class="rounded-circle img-fluid" style="height:150px; width: 150px;">
+            <h5 class="my-3">
+            <span th:text="${model.name}"></span>
+            </h5>
+            <p class="text-muted mb-1">
+            <span th:text="${model.work}"></span>
+            </p>
+            <p class="text-muted mb-4">Address will be added!!</p>
+            <div class="d-flex justify-content-center mb-2">
+            
+            <form method="post" th:action="@{'/user/update-contact/'+${model.cId}}">
+            
+              <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary mr-3">Update</button>
+              </form>
+              
+              <button th:onclick="|deleteContact(${model.cId})|" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary  ms-1">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fas fa-globe fa-lg text-warning"></i>
+                <p class="mb-0">https://google.com</p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                <p class="mb-0">
+                <span>@</span>
+                <span th:text="${model.name}"></span>
+                </p>
+                
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                <p class="mb-0">
+                <span>@</span>
+                <span th:text="${model.name}"></span>
+                </p>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                <p class="mb-0">
+                <span>Facebook/</span>
+                <span th:text="${model.name}"></span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Full Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                 <span th:text="${model.name}"></span>
+                  <span th:text="${model.secondName}"></span>
+                </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                <span th:text="${model.email}"></span>
+                </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                <span th:text="${model.phone}"></span>
+                </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Mobile</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                <span th:text="${model.phone}"></span>
+                </p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">Address will be added here</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+         <div class="col-lg-12">
+          <div class="card mb-8">
+           <div class="card-body">
+                <p class="mb-4"><span class="text-primary font-italic me-1"></span> Detailed Description
+                </p>
+                <p>
+                <span th:text="${model.description}"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+         
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<h1 th:unless="${model}"> You dont have permission !!</h1>
+</section>
+
+
+</body>
+</html>
